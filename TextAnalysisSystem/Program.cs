@@ -9,11 +9,21 @@ namespace TextAnalysisSystem
 {
     internal class Program
     {
+        /// <summary>
+        /// Metinin karakter sayisini hesaplar.
+        /// </summary>
+        /// <param name="metin">kulllanicidan alinan metin</param>
+        /// <returns>Metnin Karakter Sayisi</returns>
         static int KarakterSayisi(string metin)
         {
             int karakterSayisi = metin.Replace(" ","").Length;//replace ile boşlukları kaldırıyoruz.
             return karakterSayisi;
         }
+        /// <summary>
+        /// Metinin Kelime Sayisini Hesaplar.
+        /// </summary>
+        /// <param name="metin">kulllanicidan alinan metin</param>
+        /// <returns>Metnin Kelime Sayisi</returns>
         static int KelimeSayisi(string metin)
         {
             if (string.IsNullOrWhiteSpace(metin))
@@ -22,6 +32,11 @@ namespace TextAnalysisSystem
             string[] kelimeler = metin.Split(ayraclar,StringSplitOptions.RemoveEmptyEntries);
             return kelimeler.Length;
         }
+        /// <summary>
+        /// Metindeki Sesli Harf Sayisini Hesaplar
+        /// </summary>
+        /// <param name="metin">kulllanicidan alinan metin</param>
+        /// <returns>Metindeki Sesli Harf Sayisi</returns>
         static int SesliHarfSayisi(string metin)
         {
             string sesliHarfler = "aeıioöuü";
@@ -33,6 +48,11 @@ namespace TextAnalysisSystem
             }
             return sayac;            
         }
+        /// <summary>
+        /// Metindeki Sessiz Harf Sayisini Hesaplar
+        /// </summary>
+        /// <param name="metin">kulllanicidan alinan metin</param>
+        /// <returns>Metindeki Sessiz Harf Sayisi</returns>
         static int SessizHarfSayisi(string metin)
         {
             string sessizharfler = "bcçdfgğhjklmnprsştuvyz";
@@ -44,12 +64,22 @@ namespace TextAnalysisSystem
             }
             return sayac;
         }
+        /// <summary>
+        /// Metni Tersine Cevirir
+        /// </summary>
+        /// <param name="metin">kulllanicidan alinan metin</param>
+        /// <returns>Metnin Ters Cevrilmis Hali</returns>
         static string TersCevir(string metin)
         {
             char[] karakterler = metin.ToCharArray();
             Array.Reverse(karakterler);
             return new string(karakterler);
         }
+        /// <summary>
+        /// Metnin Polindrom mu Olduğunu Kontrol Eder
+        /// </summary>
+        /// <param name="metin">kulllanicidan alinan metin</param>
+        /// <returns>Metin Polindrom mu</returns>
         static bool PolindromMu(string metin)
         {
             string temizMetin = metin.Replace(" ","").ToLower();
@@ -70,6 +100,11 @@ namespace TextAnalysisSystem
             Console.WriteLine($"Küçük Harf: {metin.ToLower()}");
             Console.WriteLine($"Tersi: {TersCevir(metin)}");
             Console.WriteLine($"Polindrom mu: {(PolindromMu(metin) ? "Evet!":"Hayır!")}");
+            Console.WriteLine();
+            Console.WriteLine("------------------------------------------------------------");
+            Console.WriteLine("Bu program Emre Doğan tarafından yazılmıştır.");
+            Console.WriteLine("Tarih: 17.08.2025");
+            Console.WriteLine("------------------------------------------------------------");
         }
     }
 }
